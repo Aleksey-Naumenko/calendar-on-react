@@ -6,11 +6,11 @@ const CalendarDayBar = () => {
 
     return (
         <div className="calendar__day-bar">
-            {hourBars.map((hourBar) => {
-                return <div 
-                            className="calendar__hour-bar"
-                            key={Math.random()}
-                        ></div>
+            {hourBars.map(() => {
+                return <div
+                    className="calendar__hour-bar"
+                    key={Math.random()}
+                ></div>
             })}
         </div>)
 };

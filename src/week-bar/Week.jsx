@@ -8,7 +8,7 @@ const Week = ({ week }) => {
         <nav className="days-container">
             <div className="gmt">gmt+02</div>
             {week.map(day =>
-                <Day key={day.id} {...day}/>
+                <Day key={Math.random()} day={day}/>
             )}
         </nav>
     );

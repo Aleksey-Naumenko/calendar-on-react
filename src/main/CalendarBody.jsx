@@ -6,7 +6,7 @@ import CalendarDayBar from './CalendarDayBar';
 const CalendarBody = ({ week }) => {
     return(
         <div className="calendar__week-bar">
-            {week.map(day => <CalendarDayBar key={day.id} />)}  
+            {week.map(() => <CalendarDayBar key={Math.random()} />)}
         </div>
     );
 };
