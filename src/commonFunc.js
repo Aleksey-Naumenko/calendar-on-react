@@ -1,39 +1,48 @@
 export const getMonday = () => {
-    const week = Array(7).fill(new Date());
 
-    const currDay = new Date().getDay(); 
-    let counter = currDay;
+    const currDate = new Date();  // 4
+    let firstDay = null;
 
-    const currentWeek = week.map((day, index) => {
+    for (let i = 0; i <= 7; i++) {
+        if (currDate.getDay() !== 1) {
+            currDate.setDate(currDate.getDate() - 1);
 
-        if (index < currDay) {
-            --counter;
-            return new Date(day.setDate(new Date().getDate() - counter));
         } else {
-            ++counter;
-            return new Date(day.setDate(new Date().getDate() + counter))
+            firstDay = currDate;
         }
-    });
-    return currentWeek[0];
+    }
+    return firstDay;
 }
 
 export const createDisplayedWeek = firstDay => {
-    const week = Array(7).fill(new Date());
-    let firstDayOfWeek = firstDay;
+    const week = Array(7).fill(null);
+    let firstDayOfWeek = new Date(firstDay);
 
-    return week.map(day => {
+    const newWeek = week.map(day => {
         day = new Date(firstDayOfWeek);
         firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 1);
         return day;
     });
+    return newWeek;
 }
 
-// export const switchWeekForward = week => {
-//     return week.map(day => 
-//             new Date(day.setDate(day.getDate() + 7)));
-// }
+// export const getMonday = () => {
+//     const week = Array(7).fill(new Date());
 
-// export const switchWeekBackward = week => {
-//     return week.map(day => 
-//             new Date(day.setDate(day.getDate() - 7)));
+//     const currDay = new Date().getDay(); 
+//     let counter = currDay;
+
+//     const currentWeek = week.map((day, index) => {
+
+//         if (index < currDay) {
+//             --counter;
+//             return new Date(day.setDate(new Date().getDate() - counter));
+//         } else {
+//             ++counter;
+//             return new Date(day.setDate(new Date().getDate() + counter))
+//         }
+//     });
+//     console.log(new Date(currentWeek[0]));
+//     console.log(currentWeek);
+//     return new Date(currentWeek[0]);
 // }
