@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Aleksey-Naumenko/calendar-on-react/static/css/main.a23fb32c.chunk.css",
+    "main.js": "/Aleksey-Naumenko/calendar-on-react/static/js/main.d55415d8.chunk.js",
+    "main.js.map": "/Aleksey-Naumenko/calendar-on-react/static/js/main.d55415d8.chunk.js.map",
+    "runtime-main.js": "/Aleksey-Naumenko/calendar-on-react/static/js/runtime-main.b3bf1e89.js",
+    "runtime-main.js.map": "/Aleksey-Naumenko/calendar-on-react/static/js/runtime-main.b3bf1e89.js.map",
+    "static/js/2.46ed3f03.chunk.js": "/Aleksey-Naumenko/calendar-on-react/static/js/2.46ed3f03.chunk.js",
+    "static/js/2.46ed3f03.chunk.js.map": "/Aleksey-Naumenko/calendar-on-react/static/js/2.46ed3f03.chunk.js.map",
+    "index.html": "/Aleksey-Naumenko/calendar-on-react/index.html",
+    "precache-manifest.2a4d211847d13185f3ee8b162eebb7c8.js": "/Aleksey-Naumenko/calendar-on-react/precache-manifest.2a4d211847d13185f3ee8b162eebb7c8.js",
+    "service-worker.js": "/Aleksey-Naumenko/calendar-on-react/service-worker.js",
+    "static/css/main.a23fb32c.chunk.css.map": "/Aleksey-Naumenko/calendar-on-react/static/css/main.a23fb32c.chunk.css.map",
+    "static/js/2.46ed3f03.chunk.js.LICENSE.txt": "/Aleksey-Naumenko/calendar-on-react/static/js/2.46ed3f03.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b3bf1e89.js",
+    "static/js/2.46ed3f03.chunk.js",
+    "static/css/main.a23fb32c.chunk.css",
+    "static/js/main.d55415d8.chunk.js"
+  ]
+}
