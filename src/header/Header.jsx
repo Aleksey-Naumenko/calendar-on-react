@@ -1,6 +1,7 @@
 import React from 'react';
 import './header.scss';
 import { displayMonth } from './headerLogic';
+import PropTypes from 'prop-types';
 
 
 const Header = ({ week, onTodayBtnSwitcher, onWeekSwitcherForward, onWeekSwitcherBackward, onCreateBtn }) => {
@@ -39,3 +40,10 @@ const Header = ({ week, onTodayBtnSwitcher, onWeekSwitcherForward, onWeekSwitche
 
 export default Header;
 
+Header.propTypes = {
+    week: PropTypes.array,
+    onCreateBtn: PropTypes.func,
+    onTodayBtnSwitcher: PropTypes.func,
+    onWeekSwitcherForward: PropTypes.func,
+    onWeekSwitcherBackward: PropTypes.func
+};

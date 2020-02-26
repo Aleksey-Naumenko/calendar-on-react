@@ -1,7 +1,7 @@
 import React from 'react';
 import CalendarBody from './CalendarBody';
 import Sidebar from './sideBar/Sidebar';
-
+import PropTypes from 'prop-types';
 
 const Main = ({ week, events, onShowPopup, onDeleteEvent }) => {
     return (
@@ -21,3 +21,9 @@ const Main = ({ week, events, onShowPopup, onDeleteEvent }) => {
 };
 
 export default Main;
+
+Main.propTypes = {
+    week: PropTypes.array,
+    onDeleteEvent: PropTypes.func,
+    events: PropTypes.array,
+};

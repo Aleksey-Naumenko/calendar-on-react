@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './popup.scss';
 import { createPopupButton } from './popupLogic';
+import PropTypes, { bool } from 'prop-types';
 
 class Popup extends Component {
     state = {
@@ -108,3 +109,10 @@ class Popup extends Component {
 };
 
 export default Popup;
+
+Popup.propTypes = {
+    onHourBarClick: PropTypes.func,
+    onSaveEvent: PropTypes.func,
+    onPopupSwitcher: PropTypes.func,
+    isShown: bool
+};

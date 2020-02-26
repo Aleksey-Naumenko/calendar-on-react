@@ -2,6 +2,8 @@ import React from 'react';
 import './calendar-body.scss';
 import CalendarDayBar from './CalendarDayBar';
 import { findEventsByDay } from './findEvent';
+import PropTypes from 'prop-types';
+
 
 const CalendarBody = ({ week, events, onShowPopup, onDeleteEvent }) => {
 
@@ -23,3 +25,10 @@ const CalendarBody = ({ week, events, onShowPopup, onDeleteEvent }) => {
 };
 
 export default CalendarBody;
+
+CalendarBody.propTypes = {
+    week: PropTypes.array,
+    onDeleteEvent: PropTypes.func,
+    onShowPopup: PropTypes.func,
+    events: PropTypes.array,
+};

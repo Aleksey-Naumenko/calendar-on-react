@@ -1,7 +1,7 @@
 import React from 'react';
-
 import CalendarHourBar from './CalendarHourBar';
 import { findEventsByHour } from './findEvent';
+import PropTypes from 'prop-types';
 
 const CalendarDayBar = ({ events, onShowPopup, date, onDeleteEvent }) => {
     
@@ -24,3 +24,10 @@ const CalendarDayBar = ({ events, onShowPopup, date, onDeleteEvent }) => {
 };
 
 export default CalendarDayBar;
+
+CalendarDayBar.propTypes = {
+    date: PropTypes.object,
+    onDeleteEvent: PropTypes.func,
+    onShowPopup: PropTypes.func,
+    events: PropTypes.array,
+};

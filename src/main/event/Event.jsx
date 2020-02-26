@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './event.scss';
 import PopupToDelete from '../../popup/PopupToDelete';
-
+import PropTypes from 'prop-types';
 
 class Event extends Component {
     state = {
@@ -58,3 +58,9 @@ class Event extends Component {
 };
 
 export default Event;
+
+Event.propTypes = {
+    onDeleteEvent: PropTypes.func,
+    id: PropTypes.string,
+    event: PropTypes.object,
+};

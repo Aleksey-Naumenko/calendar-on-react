@@ -1,5 +1,6 @@
 import React from 'react';
 import '../main/event/event.scss';
+import PropTypes from 'prop-types';
 
 const PopupToDelete = ({ eventId, onDeleteEvent }) => {
 
@@ -13,3 +14,8 @@ const PopupToDelete = ({ eventId, onDeleteEvent }) => {
 };
 
 export default PopupToDelete;
+
+PopupToDelete.propTypes = {
+    eventId: PropTypes.string,
+    onDeleteEvent: PropTypes.func
+};
