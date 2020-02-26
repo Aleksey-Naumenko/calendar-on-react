@@ -1,63 +1,47 @@
 import React, { Component } from 'react';
 import Header from './header/Header';
-import Week from './week-bar/Week';
+import Week from './weekBar/Week';
 import Main from './main/Main';
 import Popup from './popup/Popup';
-import { getMonday, createDisplayedWeek } from './commonFunc';
+import { getMonday, createDisplayedWeek } from './weekBar/commonFunc';
+import { deleteEvent, saveEvent, fetchEvents } from './gateWays';
 
 class App extends Component {
     state = {
         firstDayOfWeek: getMonday(),
-        popup: true,
-        events: [
-            {
-                title: 'Lol1',
-                dateFrom: new Date(2020, 2, 20, 2, 30),
-                dateTo: new Date(2020, 2, 20, 3),
-                description: 'Hello there',
-                color: '#000',
-                id: Math.random().toFixed(100)
-            },
-            {
-                title: 'Lol2',
-                dateFrom: new Date(2020, 2, 21, 1, 30),
-                dateTo: new Date(2020, 2, 21, 2, 30),
-                description: 'Hello there',
-                color: '#000',
-                id: Math.random().toFixed(100)
-            },
-            {
-                title: 'Lol3',
-                dateFrom: new Date(2020, 2, 22, 2, 30),
-                dateTo: new Date(2020, 2, 22, 4),
-                description: 'Hello there',
-                color: '#000',
-                id: Math.random().toFixed(100)
-            },
-            {
-                title: 'Lol4',
-                dateFrom: new Date(2020, 2, 24),
-                dateTo: new Date(2020, 2, 24, 1),
-                description: 'Hello there',
-                color: '#000',
-                id: Math.random().toFixed(100)
-            },
-            {
-                title: 'Lol5',
-                dateFrom: new Date(2020, 2, 20, 4, 30),
-                dateTo: new Date(2020, 2, 20, 6),
-                description: 'Hello there',
-                color: '#000',
-                id: Math.random().toFixed(100)
-            },
-        ]
+        popupShown: false,
+        formData: null,
+        events: []
     };
 
-    todayBntSwitcher = () => {
-        this.setState({
-            firstDayOfWeek: getMonday(),
-        })
+    componentDidMount() {
+        fetchEvents()
+            .then(eventsList => this.setState({ events: eventsList }))
+            .catch(err => console.log(err));
     }
+
+    saveEventHandler = event => {
+        const newEvent = event;
+        const timeFrom = (newEvent.timeFrom).split(':');
+        newEvent.dateFrom = new Date(new Date(newEvent.dateFrom).setHours(+timeFrom[0], +timeFrom[1]));
+        const timeTo = (newEvent.timeTo).split(':');
+        newEvent.dateTo = new Date(new Date(newEvent.dateTo).setHours(+timeTo[0], +timeTo[1]));
+
+        if (newEvent.title === '') {
+            newEvent.title = 'No Title';
+        }
+        const { id, ...rest } = newEvent;
+
+        saveEvent(rest)
+            .then(event => {
+                const currEvents = this.state.events;
+                currEvents.push(event);
+                return this.setState({ events: currEvents })})
+            .catch(err => console.log(err));
+    };
+
+    todayBntSwitcher = () =>
+        this.setState({ firstDayOfWeek: getMonday() });
 
     weekSwitcherForward = () => {
         const firstDay = this.state.firstDayOfWeek;
@@ -77,33 +61,37 @@ class App extends Component {
         })
     }
 
-    popupHandler = () => {
-        this.setState({
-            popup: true,
-        })
-    }
+    popupSwitcher = () => this.setState({ popupShown: !this.state.popupShown });
 
-    hidePopupHandler = () => this.setState({ popup: false });
+    deleteEventHandler = (id) => {
+        deleteEvent(id)
+            .then(() => 
+                fetchEvents()
+                    .then(eventsList => 
+                        this.setState({ events: eventsList })))
+            .catch(err => console.log(err));
+    }
 
     render() {
         const week = createDisplayedWeek(this.state.firstDayOfWeek);
-
         return (
             <>
                 <Header
                     week={week}
-                    onCreateBtn={this.popupHandler}
+                    onCreateBtn={this.popupSwitcher}
                     onTodayBtnSwitcher={this.todayBntSwitcher}
                     onWeekSwitcherForward={this.weekSwitcherForward}
                     onWeekSwitcherBackward={this.weekSwitcherBackward} />
                 <Week week={week} />
                 <Main
+                    onDeleteEvent={this.deleteEventHandler}
                     week={week}
-                    events={this.state.events}
-                    onHourBarCreator={this.popupHandler} />
-                <Popup 
-                    isShown={this.state.popup}
-                    onHide={this.hidePopupHandler} />
+                    events={this.state.events} />
+                {this.state.popupShown && <Popup
+                    onHourBarClick={this.fillFormHandler}
+                    onSaveEvent={this.saveEventHandler}
+                    isShown={this.state.popupShown}
+                    onPopupSwitcher={this.popupSwitcher} />}
             </>
         );
     };

@@ -1,20 +1,20 @@
 import React from 'react';
-
 import CalendarBody from './CalendarBody';
-import Sidebar from './Sidebar';
+import Sidebar from './sideBar/Sidebar';
 
 
-const Main = ({ week, events, onHourBarCreator }) => {
+const Main = ({ week, events, onShowPopup, onDeleteEvent }) => {
     return (
         <div className="main-part">
             <div className="sidebar">
                 <Sidebar />
             </div>
             <div className="calendar">
-                <CalendarBody 
+                <CalendarBody
+                    onDeleteEvent={onDeleteEvent}
                     week={week}
                     events={events}
-                    onHourBarCreator={onHourBarCreator} />
+                    onShowPopup={onShowPopup} />
             </div>
         </div>
     );

@@ -1,19 +1,24 @@
 import React from 'react';
 import './header.scss';
+import { displayMonth } from './headerLogic';
 
-const Header = ({ onTodayBtnSwitcher, onWeekSwitcherForward, onWeekSwitcherBackward, onCreateBtn }) => {
+
+const Header = ({ week, onTodayBtnSwitcher, onWeekSwitcherForward, onWeekSwitcherBackward, onCreateBtn }) => {
+    const currentMonth = displayMonth(week);
     return (
         <header className="header">
-            <div 
-                onClick={() => onCreateBtn()}
+            <button data-id="create-btn"
+                onClick={() => {
+                    onCreateBtn()
+                }}
                 className="header__button_create">
                 <i className="fas fa-plus"></i>
                 Create
-            </div>
+            </button>
             <button
                 className="header__button_today"
                 onClick={() => onTodayBtnSwitcher()}
-                >Today</button>
+            >Today</button>
             <div className="header__week-toggle">
                 <span
                     onClick={() => onWeekSwitcherBackward()}
@@ -26,7 +31,7 @@ const Header = ({ onTodayBtnSwitcher, onWeekSwitcherForward, onWeekSwitcherBackw
                     <i className="fas fa-chevron-right chevron"></i>
                 </span>
             </div>
-            <span className="header__current-month-year">Feb 2020</span>
+            <span className="header__current-month-year">{currentMonth}</span>
 
         </header>
     );

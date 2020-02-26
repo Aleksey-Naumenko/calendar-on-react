@@ -1,20 +1,22 @@
 import React from 'react';
 import './calendar-body.scss';
-
 import CalendarDayBar from './CalendarDayBar';
-import { findEventsByDay } from '../commonFuncs/createEditEvents';
+import { findEventsByDay } from './findEvent';
 
-const CalendarBody = ({ week, events, onHourBarCreator }) => {
+const CalendarBody = ({ week, events, onShowPopup, onDeleteEvent }) => {
 
     return (
         <div className="calendar__week-bar">
-            { week.map((day) => {
+
+            {week.map((day) => {
                 const eventsOnDay = findEventsByDay(events, day);
                 return <CalendarDayBar
+                    onDeleteEvent={onDeleteEvent}
                     key={Math.random()}
                     events={eventsOnDay}
-                    onHourBarCreator={onHourBarCreator}
-                    />})
+                    onShowPopup={onShowPopup}
+                    date={day} />
+            })
             }
         </div>
     );
