@@ -14,7 +14,7 @@ const CalendarBody = ({ week, events, onShowPopup, onDeleteEvent }) => {
                 const eventsOnDay = findEventsByDay(events, day);
                 return <CalendarDayBar
                     onDeleteEvent={onDeleteEvent}
-                    key={Math.random()}
+                    key={day.toISOString()}
                     events={eventsOnDay}
                     onShowPopup={onShowPopup}
                     date={day} />

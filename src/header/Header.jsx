@@ -9,9 +9,7 @@ const Header = ({ week, onTodayBtnSwitcher, onWeekSwitcherForward, onWeekSwitche
     return (
         <header className="header">
             <button data-id="create-btn"
-                onClick={() => {
-                    onCreateBtn()
-                }}
+                onClick={onCreateBtn}
                 className="header__button_create">
                 <i className="fas fa-plus"></i>
                 Create
