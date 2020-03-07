@@ -1,11 +1,8 @@
-
-const baseUrl = 'https://crudcrud.com/api/55d8c1a8a0c24bc9a107a8b22005b40d/events'
+const baseUrl = 'https://5e6213046f5c7900149bc94d.mockapi.io/events';
 
 export const fetchEvents = () => {
     return fetch(baseUrl)
-        .then(response => response.json())
-        .then(eventsList => eventsList
-            .map(({ _id, ...rest }) => ({ ...rest, id: _id })));
+        .then(response => response.json());
 };
 
 export const fetchOneEvent = id => {
@@ -15,8 +12,7 @@ export const fetchOneEvent = id => {
                 return response.json();
             }
             throw new Error("Internal Server Error. Can't display events");
-        })
-        .then(({ _id, ...rest }) => ({ ...rest, id: _id }));
+        });
 };
 
 export const saveEvent = eventData => {
@@ -33,7 +29,6 @@ export const saveEvent = eventData => {
             }
             throw new Error("Internal Server Error. Can't save event");
         })
-        .then(({ _id, ...rest }) => ({ ...rest, id: _id }));
 };
 
 export const deleteEvent = eventId => {

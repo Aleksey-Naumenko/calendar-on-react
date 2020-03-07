@@ -16,16 +16,16 @@ const Header = ({ week, onTodayBtnSwitcher, onWeekSwitcherForward, onWeekSwitche
             </button>
             <button
                 className="header__button_today"
-                onClick={() => onTodayBtnSwitcher()}
+                onClick={onTodayBtnSwitcher}
             >Today</button>
             <div className="header__week-toggle">
                 <span
-                    onClick={() => onWeekSwitcherBackward()}
+                    onClick={onWeekSwitcherBackward}
                     className="header__week-toggle_chevron-left">
                     <i className="fas fa-chevron-left chevron"></i>
                 </span>
                 <span
-                    onClick={() => onWeekSwitcherForward()}
+                    onClick={onWeekSwitcherForward}
                     className="header__week-toggle_chevron-right">
                     <i className="fas fa-chevron-right chevron"></i>
                 </span>

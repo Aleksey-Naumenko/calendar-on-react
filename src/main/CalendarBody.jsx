@@ -18,7 +18,7 @@ const CalendarBody = ({ week, events, onShowPopup, onDeleteEvent }) => {
                     events={eventsOnDay}
                     onShowPopup={onShowPopup}
                     date={day} />
-            })
+                })
             }
         </div>
     );

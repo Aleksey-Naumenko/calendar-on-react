@@ -7,11 +7,7 @@ export const findEventsByDay = (events, day) => {
   };
 
 export const findEventsByHour = (events, hour) => {
-    const targetEvent = events.filter(event => {
-
-      return  hour === new Date(event.dateFrom).getHours();
-    })
+    const targetEvent = events.filter(event => hour === new Date(event.dateFrom).getHours());
     const [ event ] = targetEvent;
-
     return event; 
 };

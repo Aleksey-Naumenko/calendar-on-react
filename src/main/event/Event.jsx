@@ -37,9 +37,7 @@ class Event extends Component {
                 <div
                     style={styles}
                     className="day-event"
-                    onClick={(e) => {
-                        this.onShowHidePopup(e);
-                    }}
+                    onClick={e => this.onShowHidePopup(e)}
                     id={this.props.id}
                 >
                     {this.state.showDeletePopup &&

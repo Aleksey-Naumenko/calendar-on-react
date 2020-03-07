@@ -15,7 +15,12 @@ class App extends Component {
     };
 
     componentDidMount() {
-        fetchEvents()
+        this.fetchEventsHandler();
+        console.log(this.state.events);
+    }
+
+    fetchEventsHandler = () => {
+        return fetchEvents()
             .then(eventsList => this.setState({ events: eventsList }))
             .catch(err => console.log(err));
     }
@@ -29,10 +34,9 @@ class App extends Component {
 
         if (newEvent.title === '') {
             newEvent.title = 'No Title';
-        }
-        const { id, ...rest } = newEvent;
+        };
 
-        saveEvent(rest)
+        saveEvent(newEvent)
             .then(event => {
                 const currEvents = this.state.events;
                 currEvents.push(event);
@@ -65,11 +69,7 @@ class App extends Component {
 
     deleteEventHandler = (id) => {
         deleteEvent(id)
-            .then(() => 
-                fetchEvents()
-                    .then(eventsList => 
-                        this.setState({ events: eventsList })))
-            .catch(err => console.log(err));
+            .then(() => this.fetchEventsHandler());
     }
 
     render() {

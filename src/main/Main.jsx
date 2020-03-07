@@ -4,6 +4,7 @@ import Sidebar from './sideBar/Sidebar';
 import PropTypes from 'prop-types';
 
 const Main = ({ week, events, onShowPopup, onDeleteEvent }) => {
+
     return (
         <div className="main-part">
             <div className="sidebar">
